@@ -25,7 +25,7 @@ df.printSchema()
 # MAGIC %md
 # MAGIC Jak możemy zauważyć, poza nazwą kolumny i jego typu danych dostaniemy również informację, czy kolumna moze być pusta. Domyślnie każda kolumna jest ustawiona na ```True``` dla ```nullable```. Aby ustawić własny schemat danych i/lub nie chcemy, aby PySpark automatycznie tworzył własny schemat, możemy zbudować swój własny za pomocą ```StructField``` oraz ```StructType```. Schemat podczas tworzenia DF podajemy zamiast listy nazw kolumn.
 # MAGIC
-# MAGIC ✅ Tworzenie własnych schematów jest dobrą praktyką, ponieważ w przypadku zmianu schematu danych otrzymaty odpowiedni komunikat/błąd.
+# MAGIC > ✅ Tworzenie własnych schematów jest dobrą praktyką, ponieważ w przypadku zmianu schematu danych otrzymaty odpowiedni komunikat/błąd.
 
 # COMMAND ----------
 
