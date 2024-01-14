@@ -17,7 +17,7 @@ from pyspark.sql.types import (
     CharType,
     StringType,
     BooleanType,
-    DataType,
+    DateType,
     TimestampType,
     ArrayType,
     MapType,

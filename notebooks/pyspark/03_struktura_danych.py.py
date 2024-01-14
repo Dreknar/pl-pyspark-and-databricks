@@ -62,7 +62,7 @@ from pyspark.sql.types import (
     # Typ logiczny
     BooleanType,
     # Data i czas
-    DataType,
+    DateType,
     TimestampType,
     # Kolekcje danych
     ArrayType,
