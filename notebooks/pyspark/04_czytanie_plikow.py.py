@@ -83,7 +83,7 @@ display(
 # MAGIC
 # MAGIC Pliki XML są możliwe do odczytu dzięki stworzonej biblioteki przez zespół Databricks. W tym wypadku jako format podajemy hasło ```com.databricks.spark.xml``` lub ```xml```. Więcej informacji na oficjalnym [repozytorium](https://github.com/databricks/spark-xml)
 # MAGIC
-# MAGIC > ⚠️ Biblioteka ```com.databricks.spark.xml``` musi zostać zainstalowana na klastrze. Należy posać dla pakietu Maven nazwę: ```com.databricks:spark-xml_2.12:0.17.0```
+# MAGIC > ⚠️ Biblioteka ```com.databricks.spark.xml``` musi zostać zainstalowana na klastrze. Należy podać dla pakietu Maven nazwę: ```com.databricks:spark-xml_2.12:0.17.0```
 # MAGIC
 # MAGIC Dostępne opcje:
 # MAGIC - **rowTag** - nazwa roota. Wymagane!. Jeżeli dane są bardziej zagnieżdzone - dodajemy kolejne wywołania metody ```options```.
