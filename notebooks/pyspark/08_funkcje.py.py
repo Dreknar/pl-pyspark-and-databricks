@@ -107,7 +107,7 @@ display(
 # MAGIC | current_date()                             | Zwraca aktualną datę                                                                                                                                                                    |
 # MAGIC | current_timestamp()                             | Zwraca aktualną datę i czas                                                                                                                                                                    |
 # MAGIC | unix_timestamp([col])                                | Zwraca datę jako EPOCH. Jeżeli nie podamy kolumny - zwraca EPOCH dla aktualnej daty/czasu.|
-# MAGIC | from_unixtime([col])                                | Konwertuje sekundu z EPOCH (1970-01-01 00:00:00 UTC) na ciąg znaków reprezentujący znacznik czasu tego momentu w bieżącej strefie czasowej systemu w formacie yyyy-MM-dd HH:mm:ss|
+# MAGIC | from_unixtime(col)                                | Konwertuje sekundu z EPOCH (1970-01-01 00:00:00 UTC) na ciąg znaków reprezentujący znacznik czasu tego momentu w bieżącej strefie czasowej systemu w formacie yyyy-MM-dd HH:mm:ss|
 # MAGIC | date_format(date, format)                  | Konwertuje datę/łańcuch znakowy daty do łańcucha znakowego do podanego formatu                                                                                                          |
 # MAGIC | to_date(col, [format])                     | Konwertuje datę do wskazanego formatu. Jeżeli nie podamy formatu -> konwertuje do domyślnego                                                                                            |
 # MAGIC | add_months(date, n)                        | Dodaj n miesięcy do daty                                                                                                                                                                |
@@ -133,6 +133,7 @@ display(
         F.date_format(F.col("HIRE_DATE"), "d.M.y").alias("date_format"),
         F.date_add(F.col("HIRE_DATE"), 30).alias("date_add"),
         F.add_months(F.col("HIRE_DATE"), 12).alias("add_months"),
+        F.unix_timestamp(F.col("HIRE_DATE")).alias("unix_timestamp"),
         F.year(F.col("HIRE_DATE")).alias("year"),
     )
 )
@@ -187,5 +188,29 @@ display(
         F.map_keys(F.col("METADATA")).alias("map_keys"),
         F.map_values(F.col("METADATA")).alias("map_values"),
         F.size(F.col("METADATA")).alias("size")
+    )
+)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Pozostałe funkcje
+# MAGIC
+# MAGIC | Funkcja         | Opis                      |
+# MAGIC |-----------------|---------------------------|
+# MAGIC | round(col, n)       | Zaokrąglenie wartości do _n_ miejsc po przecinku |
+# MAGIC | ceil(col)   | Zaokrąglenie wartości do góry       |
+# MAGIC | floor(col) | Zaokrąglenie wartości do dołu    |
+# MAGIC
+# MAGIC > ✅ Dostępne są również operacje matematyczne (jak np. dodawanie) dla wartości liczbowych
+
+# COMMAND ----------
+
+display(
+    example_df
+    .select(
+        (F.col("SALARY") * 1.47).alias("multiply_val"),
+        F.round(F.lit(1.35678), 2).alias("round"),
+        F.ceil(F.lit(1.35678)).alias("ceil")
     )
 )
