@@ -57,7 +57,7 @@ display(
 # MAGIC %md
 # MAGIC ## Agregacja - metoda groupBy
 # MAGIC
-# MAGIC Jeżeli chcemy wykonywać grupowanie na podstawie wybranych kolumn, musimy skorzystać z metody ``groupBy(col1, col2, ...)```. Następnie wykonujemy interesującą nas agregację lub korzystamy z metody ```agg(agg_func1, agg_func1, ...)```, jeżeli mamy więcej niż jedną.
+# MAGIC Jeżeli chcemy wykonywać grupowanie na podstawie wybranych kolumn, musimy skorzystać z metody ```groupBy(col1, col2, ...)```. Następnie wykonujemy interesującą nas agregację lub korzystamy z metody ```agg(agg_func1, agg_func1, ...)```, jeżeli mamy więcej niż jedną.
 # MAGIC
 # MAGIC > ✅ Dobrą praktyką jest zawsze korzystanie z ```agg()```, nawet dla pojedynczej agregacji. Spark 3.x+ ma zoptymalizowaną metodę, a pozwala to na standardyzację pracy.
 
