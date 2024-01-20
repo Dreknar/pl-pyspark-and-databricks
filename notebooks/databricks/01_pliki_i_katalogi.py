@@ -39,45 +39,13 @@ dbutils.fs.help()
 
 # DBTITLE 1,ls
 # Wyświetla zawartość wskazanego katalogu
-dbutils.fs.ls("ścieżka/do/katalogu")
-
-# COMMAND ----------
-
-# DBTITLE 1,cp
-rekurencja = True # Domyślnie False
-
-# Kopiuje plik/katalog w nowe miejsce. W przypadku trzeciego argumentu ustawiamy True dla katalogów, który domyślnie jest False.
-dbutils.fs.cp("ścieżka/do/pliku/lub/katalogu/źródłowego", "ścieżka/do/katalogu/docelowego", rekurencja)
-
-# COMMAND ----------
-
-# DBTITLE 1,head
-n = 100 # Domyślnie 65536
-
-# Wyświetla n bajtów z pliku tekstowego. n domyślnie to: 65536. Wyświetlany tekst jest enkodowany w UTF-8/
-dbutils.fs.head("ścieżka/do/pliku", n)
+dbutils.fs.ls("/FileStore")
 
 # COMMAND ----------
 
 # DBTITLE 1,mkdirs
 # Tworzy katalog w podanej ścieżce. Brakujące katalogi w ścieżce również sa tworzone. Tak jak bashu opcja -p dla polecenia mkdir
-dbutils.fs.mkdirs("ścieżka/do/katalogu/i/nazwa")
-
-# COMMAND ----------
-
-# DBTITLE 1,mv
-rekurencja = True # Domyślnie False
-
-# Przenosi plik/katalog w nowe miejsce. W przypadku trzeciego argumentu ustawiamy True dla katalogów, który domyślnie jest False.
-dbutils.fs.mv("ścieżka/do/pliku/lub/katalogu/źródłowego", "ścieżka/do/katalogu/docelowego", rekurencja)
-
-# COMMAND ----------
-
-# DBTITLE 1,rm
-rekurencja = True # Domyślnie False
-
-# Usuwa plik/katalog. W przypadku drugiego argumentu ustawiamy True dla katalogów, który domyślnie jest False.
-dbutils.fs.mv("ścieżka/do/pliku/lub/katalogu/źródłowego", rekurencja)
+dbutils.fs.mkdirs("/FileStore/demo-from-repo")
 
 # COMMAND ----------
 
@@ -85,4 +53,36 @@ dbutils.fs.mv("ścieżka/do/pliku/lub/katalogu/źródłowego", rekurencja)
 nadpisz = True # Domyślnie False
 
 # Zapisuje podany tekst do pliku. Jeżeli plik istnieje to otrzymamy błąd. Możemy ustawić trzeci argument na True - w tej sytuacji zostanie napidsana zawartość istniejącego pliku. Wykorzystane jest enkodowanie UTF-8.
-dbutils.fs.put("ścieżka/do/pliku", "Tekst do zapisania", nadpisz)
+dbutils.fs.put("/FileStore/demo-from-repo/demo.txt", "Przykładowy tekst do zapisania w pliku.", nadpisz)
+
+# COMMAND ----------
+
+# DBTITLE 1,head
+n = 8 # Domyślnie 65536
+
+# Wyświetla n bajtów z pliku tekstowego. n domyślnie to: 65536. Wyświetlany tekst jest enkodowany w UTF-8/
+dbutils.fs.head("/FileStore/demo-from-repo/demo.txt", n)
+
+# COMMAND ----------
+
+# DBTITLE 1,cp
+rekurencja = True # Domyślnie False
+
+# Kopiuje plik/katalog w nowe miejsce. W przypadku trzeciego argumentu ustawiamy True dla katalogów, który domyślnie jest False.
+dbutils.fs.cp("/FileStore/demo-from-repo/demo.txt", "/FileStore/demo-from-repo/demo_copy.txt", rekurencja)
+
+# COMMAND ----------
+
+# DBTITLE 1,mv
+rekurencja = True # Domyślnie False
+
+# Przenosi plik/katalog w nowe miejsce lub zmienia jego nazwę.. W przypadku trzeciego argumentu ustawiamy True dla katalogów, który domyślnie jest False.
+dbutils.fs.mv("/FileStore/demo-from-repo/demo_copy.txt", "/FileStore/demo-from-repo/demo_backup.txt", rekurencja)
+
+# COMMAND ----------
+
+# DBTITLE 1,rm
+rekurencja = True # Domyślnie False
+
+# Usuwa plik/katalog. W przypadku drugiego argumentu ustawiamy True dla katalogów, który domyślnie jest False.
+dbutils.fs.rm("/FileStore/demo-from-repo/demo_backup.txt", rekurencja)
